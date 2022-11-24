@@ -8,4 +8,8 @@ export default {
     <main>M</main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+    padding-top: 155px;
+}
+</style>
