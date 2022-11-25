@@ -10,6 +10,14 @@ export default {
 
 <template>
     <main>
+        <div class="fixed-menu">
+            <i class="fa-solid fa-desktop"></i>
+            <i class="fa-solid fa-life-ring"></i>
+            <i class="fa-solid fa-wrench"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+
         <div class="band-nav">
             <div>
                 <a href="#">
@@ -174,6 +182,30 @@ export default {
 
 main {
     padding-top: 155px;
+
+    .fixed-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        z-index: 999;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+        width: 65px;
+        height: 280px;
+        padding: 20px 25px;
+        -webkit-box-shadow: 0px 0px 19px -7px rgba(0, 0, 0, 0.8);
+        box-shadow: 0px 0px 19px -7px rgba(0, 0, 0, 0.8);
+        background-color: $white;
+
+        i {
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: $violet;
+        }
+    }
 
     .band-nav {
         display: flex;
