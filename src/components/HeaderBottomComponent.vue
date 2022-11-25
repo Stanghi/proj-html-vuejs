@@ -122,7 +122,7 @@ export default {
                 width: 60px;
                 height: 45px;
                 color: $white;
-                background-color: $lens-background;
+                background-color: $light-violet;
 
                 i {
                     margin-right: 0px;

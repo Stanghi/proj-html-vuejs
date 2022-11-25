@@ -53,7 +53,7 @@ export default {
             <div class="jumbotron-right"></div>
         </div>
 
-        <div class="popular-courses">
+        <div class="popular-dev-courses">
             <div class="ms-container">
                 <h2>Popular Development Courses</h2>
                 <div class="cards">
@@ -145,6 +145,27 @@ export default {
                 </div>
             </div>
         </div>
+
+        <div class="popular-courses">
+            <div class="ms-container">
+                <h2>Popular courses</h2>
+                <p>Discover our most popular courses for self learning</p>
+
+                <div class="cards">
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                </div>
+
+                <div>
+                    <button><i class="fa-solid fa-chevron-left"></i></button>
+                    <button><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
@@ -225,7 +246,7 @@ main {
         }
     }
 
-    .popular-courses {
+    .popular-dev-courses {
         padding-bottom: 30px;
         h2 {
             margin-bottom: 35px;
@@ -307,7 +328,6 @@ main {
         justify-content: center;
         align-items: center;
         height: 170px;
-        margin-bottom: 105px;
         color: $white;
         background-color: $red;
 
@@ -349,8 +369,43 @@ main {
                     height: 45px;
                     text-transform: uppercase;
                     color: $white;
-                    background-color: $lens-background;
+                    background-color: $light-violet;
                 }
+            }
+        }
+    }
+
+    .popular-courses {
+        padding-top: 105px;
+        background-color: #f0f4fa;
+
+        .ms-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            h2 {
+                font-size: 3rem;
+                color: $violet;
+                margin-bottom: 15px;
+            }
+
+            p {
+                margin-bottom: 50px;
+            }
+        }
+
+        button {
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+            background-color: $white;
+            width: 45px;
+            height: 45px;
+            margin-bottom: 75px;
+            color: #e0e0e0;
+
+            &:hover {
+                background-color: $light-violet;
             }
         }
     }
