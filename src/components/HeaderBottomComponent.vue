@@ -154,6 +154,10 @@ export default {
             a {
                 color: $white;
             }
+
+            &:hover {
+                background-color: #e53d48;
+            }
         }
 
         .fa-bookmark {
