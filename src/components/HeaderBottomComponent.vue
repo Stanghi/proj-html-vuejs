@@ -34,7 +34,7 @@ export default {
                 </a>
             </div>
 
-            <div>
+            <div class="enterprise">
                 <a href="#">
                     <i class="fa-solid fa-briefcase"></i>
                     For enterprise
@@ -72,17 +72,16 @@ export default {
         align-items: center;
         justify-content: space-between;
 
-        a {
+        .select-category a,
+        .bullhorn a,
+        .enterprise a,
+        .log-in a {
             text-decoration: none;
             color: $text-gray;
         }
 
-        div {
-            color: $text-gray;
-
-            i {
-                margin-right: 10px;
-            }
+        div i {
+            margin-right: 10px;
         }
 
         .logo {
@@ -115,6 +114,7 @@ export default {
             }
 
             .lens {
+                cursor: pointer;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -136,28 +136,6 @@ export default {
 
         .log-in {
             margin-left: 75px;
-        }
-
-        .ms-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 135px;
-            height: 60px;
-            margin: 0 25px;
-            border: none;
-            border-radius: 30px;
-            text-transform: uppercase;
-            font-weight: bold;
-            background-color: $red;
-
-            a {
-                color: $white;
-            }
-
-            &:hover {
-                background-color: #e53d48;
-            }
         }
 
         .fa-bookmark {

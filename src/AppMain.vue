@@ -66,6 +66,68 @@ export default {
                 </div>
             </div>
         </div>
+
+        <div class="limitless">
+            <div class="text">
+                <h2>Limitless learning, more possibilities</h2>
+                <p>
+                    Online courses open the opportunity for learning to almost anyone, regardless of
+                    their scheduling commitments.
+                </p>
+                <button class="ms-btn">
+                    <a href="#"> Read more </a>
+                </button>
+            </div>
+        </div>
+
+        <div class="recent-courses ms-container">
+            <h2>Recent courses</h2>
+            <div class="nav-categories">
+                <span class="active">
+                    <a href="#"> All categories </a>
+                </span>
+                <span :class="active && 'active'">
+                    <a href="#"> Business </a>
+                </span>
+                <span :class="active && 'active'">
+                    <a href="#"> Design </a>
+                </span>
+                <span :class="active && 'active'">
+                    <a href="#"> Development </a>
+                </span>
+                <span :class="active && 'active'">
+                    <a href="#"> IT & Software </a>
+                </span>
+                <span :class="active && 'active'">
+                    <a href="#"> Lifestyle </a>
+                </span>
+                <span :class="active && 'active'">
+                    <a href="#"> Marketing </a>
+                </span>
+                <span :class="active && 'active'">
+                    <a href="#"> Office Productivity </a>
+                </span>
+            </div>
+
+            <div class="cards">
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+                <MainCardComponent />
+            </div>
+
+            <button class="ms-btn">
+                <a href="#"> Show all </a>
+            </button>
+        </div>
     </main>
 </template>
 
@@ -81,7 +143,7 @@ main {
         align-items: center;
         height: 80px;
         margin-bottom: 30px;
-        background-color: #273044; // VAR
+        background-color: $violet;
 
         div {
             display: flex;
@@ -146,14 +208,79 @@ main {
     }
 
     .popular-courses {
-        padding-bottom: 85px;
+        padding-bottom: 30px;
         h2 {
             margin-bottom: 35px;
+            color: $violet;
+        }
+    }
+
+    .limitless {
+        position: relative;
+        height: 530px;
+        margin-bottom: 105px;
+        background-image: url('./assets/images/bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        .text {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(0, -50%);
+            width: 540px;
+            color: $violet;
+
+            h2 {
+                font-size: 3rem;
+                padding-bottom: 30px;
+            }
+
+            p {
+                font-weight: bold;
+                padding-bottom: 50px;
+            }
+        }
+    }
+
+    .recent-courses {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 110px;
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: $violet;
+        }
+
+        .nav-categories {
+            margin-bottom: 55px;
+
+            span {
+                padding: 10px 15px;
+                margin-right: 15px;
+
+                a {
+                    text-decoration: none;
+                    color: #937992; // VAR
+                }
+
+                &:last-child {
+                    margin-right: 0px;
+                }
+            }
+
+            .active {
+                background-color: #f0f4fa;
+                border-radius: 30px;
+            }
         }
 
         .cards {
-            display: flex;
-            justify-content: space-between;
+            margin-bottom: 30px;
         }
     }
 }

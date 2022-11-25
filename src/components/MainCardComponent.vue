@@ -34,9 +34,11 @@ export default {
 @use '../style/partials/variables' as *;
 
 .card {
+    cursor: pointer;
     width: 270px;
     min-height: 360px;
     border: 1px solid #e2e2e2;
+    margin-bottom: 50px;
 
     img:first-child {
         width: 100%;
