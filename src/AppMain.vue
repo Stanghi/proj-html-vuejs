@@ -1,6 +1,10 @@
 <script>
+import MainCardComponent from './components/MainCardComponent.vue';
 export default {
     name: 'AppMain',
+    components: {
+        MainCardComponent,
+    },
 };
 </script>
 
@@ -48,6 +52,20 @@ export default {
             </div>
             <div class="jumbotron-right"></div>
         </div>
+
+        <div class="popular-courses">
+            <div class="ms-container">
+                <h2>Popular Development Courses</h2>
+                <div class="cards">
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                    <MainCardComponent />
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
@@ -89,6 +107,7 @@ main {
     .jumbotron {
         display: flex;
         height: 400px;
+        margin-bottom: 90px;
 
         .jumbotron-left {
             display: flex;
@@ -123,6 +142,18 @@ main {
                 border-left: 180px solid $red;
                 border-top: 400px solid transparent;
             }
+        }
+    }
+
+    .popular-courses {
+        padding-bottom: 85px;
+        h2 {
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
         }
     }
 }

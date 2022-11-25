@@ -24,6 +24,7 @@ header {
     position: fixed;
     width: 100vw;
     height: 155px;
+    z-index: 999;
     background-color: $white;
 }
 </style>
