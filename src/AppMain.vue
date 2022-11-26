@@ -182,6 +182,23 @@ export default {
                 </div>
             </div>
         </section>
+
+        <section class="testimonial">
+            <div>
+                <h2>Investing for Your Future</h2>
+                <p>
+                    It is no exaggeration to say this MasterStudy experience was transformative-both
+                    professionally and personally. This workshop will long remain a high point of my
+                    life. Thanks again.... I am feeling energized and eager to start teaching my
+                    class next week. I can't wait to use all of my new teaching tools. I will
+                    absolutely recommend this workshop to other educators!
+                </p>
+                <span>
+                    <h3>Linda Green</h3>
+                    <p>Procuct Manager, Apple Inc</p>
+                </span>
+            </div>
+        </section>
     </main>
 </template>
 
@@ -344,7 +361,7 @@ main {
 
                 a {
                     text-decoration: none;
-                    color: #937992; // VAR
+                    color: #937992; //? VAR
                 }
 
                 &:last-child {
@@ -353,7 +370,7 @@ main {
             }
 
             .active {
-                background-color: #f0f4fa;
+                background-color: #f0f4fa; //? var
                 border-radius: 30px;
             }
         }
@@ -366,7 +383,7 @@ main {
     .popular-courses {
         padding-top: 105px;
         margin-bottom: 75px;
-        background-color: #f0f4fa; // var
+        background-color: #f0f4fa; //? var
 
         .ms-container {
             display: flex;
@@ -387,12 +404,12 @@ main {
 
         button {
             cursor: pointer;
-            border: 1px solid #e0e0e0; // var
+            border: 1px solid #e0e0e0; //? var
             background-color: $white;
             width: 45px;
             height: 45px;
             margin-bottom: 75px;
-            color: #e0e0e0; // var
+            color: #e0e0e0; //? var
 
             &:hover {
                 background-color: $light-violet;
@@ -410,7 +427,7 @@ main {
             align-items: center;
             width: 855px;
             height: 375px;
-            border: 1px solid #e2e2e2;
+            border: 1px solid #e2e2e2; //? VAR
 
             img {
                 margin: 0 40px;
@@ -430,12 +447,56 @@ main {
                 }
 
                 button:hover {
-                    background-color: #46c197; // VAR
+                    background-color: #46c197; //? VAR
                 }
             }
 
             &:first-child {
                 margin-right: 30px;
+            }
+        }
+    }
+
+    .testimonial {
+        position: relative;
+        height: 670px;
+        background-image: url('./assets/images/testimonial.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        div {
+            position: absolute;
+            top: 50%;
+            left: 370px;
+            transform: translate(0, -50%);
+            width: 740px;
+            height: 530px;
+            padding: 100px;
+            color: $violet;
+            background-color: $white;
+
+            h2 {
+                margin-bottom: 30px;
+                font-size: 2.2rem;
+            }
+
+            p {
+                margin-bottom: 50px;
+                line-height: 30px;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: -25px;
+                transform: translate(0, -50%);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 17.5px 0 17.5px 25px;
+                border-color: transparent transparent transparent $white;
             }
         }
     }
