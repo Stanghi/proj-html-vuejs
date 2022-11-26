@@ -5,7 +5,16 @@ export default {
 </script>
 
 <template>
-    <footer>F</footer>
+    <footer>
+        <div class="about"></div>
+    </footer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use './style/partials/variables' as *;
+
+footer {
+    height: 365px;
+    background-color: $violet;
+}
+</style>
