@@ -20,7 +20,7 @@ export default {
             <i class="fa-solid fa-mobile-screen-button"></i>
         </div>
 
-        <div class="band-nav">
+        <section class="band-nav">
             <div>
                 <a href="#">
                     <i class="fa-solid fa-chart-line"></i>
@@ -51,9 +51,9 @@ export default {
                     Office Productivity
                 </a>
             </div>
-        </div>
+        </section>
 
-        <div class="jumbotron">
+        <section class="jumbotron">
             <div class="jumbotron-left">
                 <div>
                     <h1>Udemy Affiliate Sales</h1>
@@ -61,9 +61,9 @@ export default {
                 </div>
             </div>
             <div class="jumbotron-right"></div>
-        </div>
+        </section>
 
-        <div class="popular-dev-courses ms-container">
+        <section class="popular-dev-courses ms-container">
             <h2>Popular Development Courses</h2>
             <div class="cards">
                 <MainCardComponent />
@@ -73,9 +73,9 @@ export default {
                 <MainCardComponent />
                 <MainCardComponent />
             </div>
-        </div>
+        </section>
 
-        <div class="limitless">
+        <section class="limitless">
             <div class="content">
                 <h2>Limitless learning, more possibilities</h2>
                 <p>
@@ -86,9 +86,9 @@ export default {
                     <a href="#"> Read more </a>
                 </button>
             </div>
-        </div>
+        </section>
 
-        <div class="recent-courses ms-container">
+        <section class="recent-courses ms-container">
             <h2>Recent courses</h2>
             <div class="nav-categories">
                 <span class="active" :class="active && 'active'">
@@ -135,11 +135,11 @@ export default {
             <button class="ms-btn">
                 <a href="#"> Show all </a>
             </button>
-        </div>
+        </section>
 
         <MainNewsletterComponent />
 
-        <div class="popular-courses">
+        <section class="popular-courses">
             <div class="ms-container">
                 <h2>Popular courses</h2>
                 <p>Discover our most popular courses for self learning</p>
@@ -158,7 +158,30 @@ export default {
                     <button><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="become-access ms-container">
+            <div class="box">
+                <img src="./assets/images/instructor.png" alt="instructor" />
+                <div>
+                    <h2>Become an instructor</h2>
+                    <p>Teach what you love. Masterstudy gives you the tools to create a course.</p>
+                    <button class="ms-btn">
+                        <a href="#"> Start teaching </a>
+                    </button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./assets/images/business.png" alt="business" />
+                <div>
+                    <h2>Access For Business</h2>
+                    <p>Get unlimited access to 2,500 of top courses for yout team.</p>
+                    <button class="ms-btn">
+                        <a href="#"> doing business </a>
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
 </template>
 
@@ -342,6 +365,7 @@ main {
 
     .popular-courses {
         padding-top: 105px;
+        margin-bottom: 75px;
         background-color: #f0f4fa; // var
 
         .ms-container {
@@ -372,6 +396,46 @@ main {
 
             &:hover {
                 background-color: $light-violet;
+            }
+        }
+    }
+
+    .become-access {
+        display: flex;
+        align-items: center;
+        padding-bottom: 70px;
+
+        .box {
+            display: flex;
+            align-items: center;
+            width: 855px;
+            height: 375px;
+            border: 1px solid #e2e2e2;
+
+            img {
+                margin: 0 40px;
+            }
+
+            div {
+                width: 360px;
+
+                h2 {
+                    font-size: 2rem;
+                    padding-bottom: 30px;
+                    color: $violet;
+                }
+
+                p {
+                    padding-bottom: 30px;
+                }
+
+                button:hover {
+                    background-color: #46c197; // VAR
+                }
+            }
+
+            &:first-child {
+                margin-right: 30px;
             }
         }
     }
