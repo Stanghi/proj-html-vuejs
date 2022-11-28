@@ -1,6 +1,14 @@
 <script>
+import headerLinks from '../data/header-links.js';
+import headerSocials from '../data/header-socials.js';
 export default {
     name: 'HeaderTopComponent',
+    data() {
+        return {
+            headerLinks,
+            headerSocials,
+        };
+    },
 };
 </script>
 
@@ -18,32 +26,15 @@ export default {
             <div class="ms-nav">
                 <div class="links">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Course Formats</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Demos</a></li>
+                        <li v-for="(link, index) in headerLinks" :key="index">
+                            <a :href="link.url">{{ link.name }}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="socials">
                     <ul>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-google-plus"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <li v-for="(social, index) in headerSocials" :key="index">
+                            <a :href="social.url"><i class="fa-brands" :class="social.name"></i></a>
                         </li>
                     </ul>
                 </div>
