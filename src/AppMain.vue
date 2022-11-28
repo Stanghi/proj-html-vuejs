@@ -14,25 +14,45 @@ export default {
         return {
             coursesDataBase,
             categories,
-            showCourseNumber: 12,
+            showAll: false,
+            page: 1,
+            NumberOfPages: Math.ceil(coursesDataBase.length / 6),
+            coursesDataBase2: [...coursesDataBase],
         };
     },
     methods: {
         showHideCourses() {
-            if (this.showCourseNumber === 12) {
-                this.showCourseNumber = coursesDataBase.length;
-            } else {
-                this.showCourseNumber = 12;
-            }
+            this.showAll = !this.showAll;
         },
 
         toggleCategory(i) {
-            for (this.x in categories) {
-                this.categories[this.x].active = false;
+            for (let cat of categories) {
+                cat.active = false;
             }
-            this.categories[i].active
-                ? (this.categories[i].active = false)
-                : (this.categories[i].active = true);
+            this.categories[i].active = true;
+
+            if (this.categories[i].name === 'All categories') {
+                this.coursesDataBase2 = this.coursesDataBase;
+            } else {
+                this.coursesDataBase2 = this.coursesDataBase.filter(
+                    (item) => item.category === this.categories[i].name
+                );
+            }
+        },
+
+        nextPrev(value) {
+            if (value === 'prev') {
+                if (this.page > 1) {
+                    this.page--;
+                } else {
+                    this.page = 1;
+                }
+            } else {
+                if (this.page < this.NumberOfPages) {
+                    this.page++;
+                }
+            }
+            console.log(this.page);
         },
     },
 };
@@ -130,18 +150,16 @@ export default {
             </div>
 
             <div class="cards">
-                <MainCardComponent
-                    v-for="course in coursesDataBase"
-                    :key="course.id"
-                    v-show="course.id <= showCourseNumber"
-                    :course="course"
-                />
+                <template v-for="(course, index) in coursesDataBase2" :key="course.id">
+                    <MainCardComponent v-show="showAll ? true : index < 12" :course="course" />
+                </template>
             </div>
 
-            <button @click="showHideCourses()" class="ms-btn">
-                <p v-if="showCourseNumber != coursesDataBase.length">Show all</p>
+            <button @click="showHideCourses()" v-if="coursesDataBase2.length > 12" class="ms-btn">
+                <p v-if="!showAll">Show all</p>
                 <p v-else>Hide</p>
             </button>
+            <h3 v-else-if="coursesDataBase2.length === 0">Nothing found</h3>
         </section>
 
         <MainNewsletterComponent />
@@ -155,14 +173,18 @@ export default {
                     <MainCardComponent
                         v-for="course in coursesDataBase"
                         :key="course.id"
-                        v-show="course.id <= 6"
+                        v-show="course.id / 6 <= page && Math.ceil(course.id / 6) >= page"
                         :course="course"
                     />
                 </div>
 
                 <div>
-                    <button><i class="fa-solid fa-chevron-left"></i></button>
-                    <button><i class="fa-solid fa-chevron-right"></i></button>
+                    <button @click="nextPrev('prev')">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button @click="nextPrev('next')">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -222,9 +244,8 @@ main {
         align-items: center;
         position: fixed;
         z-index: 999;
-        top: 50%;
+        bottom: 0;
         right: 0;
-        transform: translate(0, -50%);
         width: 65px;
         height: 280px;
         padding: 20px 25px;
@@ -352,11 +373,11 @@ main {
         align-items: center;
         flex-direction: column;
         margin-bottom: 110px;
+        color: $violet;
 
         h2 {
             font-size: 3rem;
             margin-bottom: 40px;
-            color: $violet;
         }
 
         .nav-categories {
