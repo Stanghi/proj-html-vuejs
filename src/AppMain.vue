@@ -1,11 +1,18 @@
 <script>
 import MainCardComponent from './components/MainCardComponent.vue';
 import MainNewsletterComponent from './components/MainNewsletterComponent.vue';
+import coursesDataBase from './data/courses.js';
+
 export default {
     name: 'AppMain',
     components: {
         MainCardComponent,
         MainNewsletterComponent,
+    },
+    data() {
+        return {
+            coursesDataBase,
+        };
     },
 };
 </script>
@@ -66,12 +73,11 @@ export default {
         <section class="popular-dev-courses ms-container">
             <h2>Popular Development Courses</h2>
             <div class="cards">
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
+                <MainCardComponent
+                    v-for="course in coursesDataBase"
+                    :key="course.id"
+                    :course="course"
+                />
             </div>
         </section>
 
@@ -118,18 +124,11 @@ export default {
             </div>
 
             <div class="cards">
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
-                <MainCardComponent />
+                <MainCardComponent
+                    v-for="course in coursesDataBase"
+                    :key="course.id"
+                    :course="course"
+                />
             </div>
 
             <button class="ms-btn">
@@ -145,12 +144,11 @@ export default {
                 <p>Discover our most popular courses for self learning</p>
 
                 <div class="cards">
-                    <MainCardComponent />
-                    <MainCardComponent />
-                    <MainCardComponent />
-                    <MainCardComponent />
-                    <MainCardComponent />
-                    <MainCardComponent />
+                    <MainCardComponent
+                        v-for="course in coursesDataBase"
+                        :key="course.id"
+                        :course="course"
+                    />
                 </div>
 
                 <div>

@@ -1,16 +1,26 @@
 <script>
 export default {
     name: 'MainCardComponent',
+    props: {
+        course: Object,
+    },
+    methods: {
+        getImagePath(cover) {
+            return new URL(`../assets/images/${cover}`, import.meta.url).href;
+        },
+    },
 };
 </script>
 
 <template>
     <div class="card">
-        <img src="../assets/images/ios10.jpg" alt="ios10" />
+        <div class="img-cover">
+            <img :src="getImagePath(course.cover)" :alt="course.name" />
+        </div>
         <div class="content">
             <div class="content-text">
-                <p>Development ></p>
-                <p>The complete IOS 10 & Swift 3 Developer Course</p>
+                <p>{{ course.category }}</p>
+                <p>{{ course.name }}</p>
             </div>
             <div class="card-bottom">
                 <div class="rating-star">
@@ -22,8 +32,8 @@ export default {
                 </div>
 
                 <div class="price">
-                    <p>$ 199.99</p>
-                    <p>$ 100</p>
+                    <p>{{ course.price }}</p>
+                    <p>{{ course.discounterPrice }}</p>
                 </div>
             </div>
         </div>
@@ -41,9 +51,10 @@ export default {
     margin-bottom: 50px;
     background-color: $white;
 
-    img:first-child {
+    .img-cover img {
         width: 100%;
         height: 180px;
+        object-fit: cover;
     }
 
     .content {
