@@ -63,7 +63,7 @@ export default {
 .card {
     cursor: pointer;
     width: calc(100% / 6 - 15px);
-    min-height: 360px;
+    height: 360px;
     border: 1px solid #e2e2e2;
     margin-bottom: 50px;
     margin-right: 15px;
