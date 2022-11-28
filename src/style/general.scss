@@ -33,7 +33,8 @@ body {
     font-weight: bold;
     background-color: $red;
 
-    a {
+    a,
+    p {
         font-weight: bolder;
         text-decoration: none;
         color: $white;
@@ -46,7 +47,6 @@ body {
 
 .cards {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
 }

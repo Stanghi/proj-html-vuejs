@@ -1,8 +1,14 @@
 <script>
+import coursesDataBase from '../data/courses.js';
 export default {
     name: 'MainCardComponent',
     props: {
         course: Object,
+    },
+    data() {
+        return {
+            coursesDataBase,
+        };
     },
     methods: {
         getImagePath(cover) {
@@ -24,16 +30,27 @@ export default {
             </div>
             <div class="card-bottom">
                 <div class="rating-star">
-                    <img src="../assets/images/starfull.svg" alt="starfull" />
-                    <img src="../assets/images/starfull.svg" alt="starfull" />
-                    <img src="../assets/images/starfull.svg" alt="starfull" />
-                    <img src="../assets/images/starfull.svg" alt="starfull" />
-                    <img src="../assets/images/staremptyl.svg" alt="staremptyl" />
+                    <div v-for="(n, index) in 5" :key="index">
+                        <img
+                            v-if="index < course.rating"
+                            src="../assets/images/starfull.svg"
+                            alt="starfull"
+                        />
+                        <img v-else src="../assets/images/staremptyl.svg" alt="staremptyl" />
+                    </div>
                 </div>
 
                 <div class="price">
-                    <p>{{ course.price }}</p>
-                    <p>{{ course.discounterPrice }}</p>
+                    <p
+                        :class="
+                            course.discounterPrice === false ? 'course-final-price' : 'course-price'
+                        "
+                    >
+                        {{ course.price }}
+                    </p>
+                    <p v-if="course.discounterPrice" class="course-final-price">
+                        {{ course.discounterPrice }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -45,10 +62,11 @@ export default {
 
 .card {
     cursor: pointer;
-    width: 270px;
+    width: calc(100% / 6 - 15px);
     min-height: 360px;
     border: 1px solid #e2e2e2;
     margin-bottom: 50px;
+    margin-right: 15px;
     background-color: $white;
 
     .img-cover img {
@@ -81,9 +99,12 @@ export default {
             justify-content: space-between;
             height: 50px;
 
-            .rating-star img {
-                height: 100%;
-                width: 15px;
+            .rating-star {
+                display: flex;
+                img {
+                    height: 100%;
+                    width: 15px;
+                }
             }
 
             .price {
@@ -92,13 +113,13 @@ export default {
                 align-items: flex-end;
                 flex-direction: column;
 
-                p:first-child {
+                .course-price {
                     text-decoration: line-through;
                     font-size: 0.8rem;
                     color: $text-light-gray;
                 }
 
-                p:last-child {
+                .course-final-price {
                     font-weight: bold;
                     font-size: 0.9rem;
                 }

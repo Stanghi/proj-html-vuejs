@@ -2,6 +2,7 @@
 import MainCardComponent from './components/MainCardComponent.vue';
 import MainNewsletterComponent from './components/MainNewsletterComponent.vue';
 import coursesDataBase from './data/courses.js';
+import categories from './data/categories.js';
 
 export default {
     name: 'AppMain',
@@ -12,7 +13,27 @@ export default {
     data() {
         return {
             coursesDataBase,
+            categories,
+            showCourseNumber: 12,
         };
+    },
+    methods: {
+        showHideCourses() {
+            if (this.showCourseNumber === 12) {
+                this.showCourseNumber = coursesDataBase.length;
+            } else {
+                this.showCourseNumber = 12;
+            }
+        },
+
+        toggleCategory(i) {
+            for (this.x in categories) {
+                this.categories[this.x].active = false;
+            }
+            this.categories[i].active
+                ? (this.categories[i].active = false)
+                : (this.categories[i].active = true);
+        },
     },
 };
 </script>
@@ -75,6 +96,7 @@ export default {
             <div class="cards">
                 <MainCardComponent
                     v-for="course in coursesDataBase"
+                    v-show="course.category === 'Development'"
                     :key="course.id"
                     :course="course"
                 />
@@ -97,29 +119,13 @@ export default {
         <section class="recent-courses ms-container">
             <h2>Recent courses</h2>
             <div class="nav-categories">
-                <span class="active" :class="active && 'active'">
-                    <a href="#"> All categories </a>
-                </span>
-                <span :class="active && 'active'">
-                    <a href="#"> Business </a>
-                </span>
-                <span :class="active && 'active'">
-                    <a href="#"> Design </a>
-                </span>
-                <span :class="active && 'active'">
-                    <a href="#"> Development </a>
-                </span>
-                <span :class="active && 'active'">
-                    <a href="#"> IT & Software </a>
-                </span>
-                <span :class="active && 'active'">
-                    <a href="#"> Lifestyle </a>
-                </span>
-                <span :class="active && 'active'">
-                    <a href="#"> Marketing </a>
-                </span>
-                <span :class="active && 'active'">
-                    <a href="#"> Office Productivity </a>
+                <span
+                    v-for="(category, index) in categories"
+                    :key="index"
+                    :class="category.active && 'active'"
+                    @click="toggleCategory(index)"
+                >
+                    <p>{{ category.name }}</p>
                 </span>
             </div>
 
@@ -127,12 +133,14 @@ export default {
                 <MainCardComponent
                     v-for="course in coursesDataBase"
                     :key="course.id"
+                    v-show="course.id <= showCourseNumber"
                     :course="course"
                 />
             </div>
 
-            <button class="ms-btn">
-                <a href="#"> Show all </a>
+            <button @click="showHideCourses()" class="ms-btn">
+                <p v-if="showCourseNumber != coursesDataBase.length">Show all</p>
+                <p v-else>Hide</p>
             </button>
         </section>
 
@@ -147,6 +155,7 @@ export default {
                     <MainCardComponent
                         v-for="course in coursesDataBase"
                         :key="course.id"
+                        v-show="course.id <= 6"
                         :course="course"
                     />
                 </div>
@@ -351,14 +360,15 @@ main {
         }
 
         .nav-categories {
+            display: flex;
             margin-bottom: 55px;
 
             span {
                 padding: 10px 15px;
                 margin-right: 15px;
 
-                a {
-                    text-decoration: none;
+                p {
+                    cursor: pointer;
                     color: #937992; //? VAR
                 }
 
